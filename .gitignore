@@ -1,0 +1,29 @@
+# Compiled executables
+*.out
+fcfs
+sjf
+producer_consumer
+dining_philosophers
+memory_allocation
+page_replacement
+file_organization
+disk_scheduling
+
+# Object files
+*.o
+*.obj
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
