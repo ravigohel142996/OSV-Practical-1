@@ -1,111 +1,52 @@
-#!/bin/bash
+echo "Calculating simple Interest Rate"
+echo "Enter the Principal Amount"
+read Principal
+echo "Enter Annual Interest Rate"
+read Rate
+echo "Enter the Time period"
+read Time
 
-# ============================================================================
-# Program: Student Marksheet Generator
-# Author: Marwadi University
-# Course: Operating System & Virtualization (01AI0403)
-# Practical: 3(c)
-# ============================================================================
+echo $(((Principal*Rate*Time)/100))
 
-# AIM:
-# To write a shell script to generate student marksheet for 3 subjects
 
-# ALGORITHM:
-# Step 1: Start
-# Step 2: Read student details (Name, Roll No)
-# Step 3: Read marks for 3 subjects
-# Step 4: Calculate total marks and percentage
-# Step 5: Determine grade based on percentage
-# Step 6: Determine result (Pass/Fail - Pass if all subjects >= 40)
-# Step 7: Display complete marksheet
-# Step 8: Stop
-
-# PROGRAM:
-
-echo "=========================================="
-echo "    STUDENT MARKSHEET GENERATOR"
-echo "=========================================="
-echo
-
-# Reading student details
-read -p "Enter Student Name : " name
-read -p "Enter Roll Number  : " rollno
-
-echo
-echo "Enter marks for three subjects (out of 100):"
-read -p "Subject 1 : " marks1
-read -p "Subject 2 : " marks2
-read -p "Subject 3 : " marks3
-
-# Calculate total and percentage
-total=$((marks1 + marks2 + marks3))
-percentage=$((($total * 100) / 300))
-
-# Determine grade based on percentage
-if (( $($percentage >= 90) )); then
-    grade="A+"
-elif (( $($percentage >= 80) )); then
-    grade="A"
-elif (( $($percentage >= 70) )); then
-    grade="B+"
-elif (( $($percentage >= 60 ) )); then
-    grade="B"
-elif (( $($percentage >= 50 ) )); then
-    grade="C"
-elif (( $($percentage >= 40) )); then
-    grade="D"
+echo "Enter any number and check fot it is positive or negative or zero: "
+read number
+if [ $number -lt 0 ]; then
+    echo "$number is negative"
+elif [ $number -gt 0 ]; then
+    echo "$number is positive"
 else
-    grade="F"
+    echo "$number is zero"
 fi
+echo "-------------------------------------------"
+echo "Enter Student Details"
+echo "Enter the name:"
+read name
+echo "Enter Roll number:"
+read Roll
+echo "Enter marks of subject 1:"
+read m1
+echo "Enter marks of subject 2:"
+read m2
+echo "Enter marks of subject 3:"
+read m3
 
-# Determine result (Pass if all subjects >= 40)
-if [ $marks1 -ge 40 ] && [ $marks2 -ge 40 ] && [ $marks3 -ge 40 ]; then
-    result="PASS"
+total=$((m1 + m2 + m3))
+percent=$(($total / 3))
+
+echo "Name: $name"
+echo "Roll No: $Roll"
+echo "Total marks: $total"
+echo "Percentage: $percent %"
+if [ $percent -gt 70 ]
+then
+    echo "Distinction"
+elif [ $percent -gt 60 ]
+then
+    echo "Class: First Class"
+elif [ $percent -gt 50 ]
+then
+    echo "Class: Second Class"
 else
-    result="FAIL"
+    echo "Class: Fail"
 fi
-
-# Display Marksheet
-echo
-echo "=========================================="
-echo "           MARKSHEET"
-echo "=========================================="
-echo "Student Name   : $name"
-echo "Roll Number    : $rollno"
-echo "=========================================="
-echo "Subject 1      : $marks1"
-echo "Subject 2      : $marks2"
-echo "Subject 3      : $marks3"
-echo "=========================================="
-echo "Total Marks    : $total / 300"
-echo "Percentage     : $percentage %"
-echo "Grade          : $grade"
-echo "Result         : $result"
-echo "=========================================="
-
-# SAMPLE INPUT:
-# Enter Student Name : Ravi Kumar
-# Enter Roll Number  : 101
-# Subject 1 : 85
-# Subject 2 : 92
-# Subject 3 : 78
-
-# SAMPLE OUTPUT:
-# Student Name   : Ravi Kumar
-# Roll Number    : 101
-# Subject 1      : 85
-# Subject 2      : 92
-# Subject 3      : 78
-# Total Marks    : 255 / 300
-# Percentage     : 85.00 %
-# Grade          : A
-# Result         : PASS
-
-# COMMANDS TO RUN:
-# chmod +x marksheet.sh
-# ./marksheet.sh
-
-# VIVA EXPLANATION:
-# This script generates a complete student marksheet with grade and result.
-# It calculates percentage using bc for decimal precision and assigns grade based on ranges.
-# Student passes only if all three subjects have marks >= 40 (no backlog).
