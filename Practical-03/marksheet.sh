@@ -39,20 +39,20 @@ read -p "Subject 3 : " marks3
 
 # Calculate total and percentage
 total=$((marks1 + marks2 + marks3))
-percentage=$(echo scale=2; ($total * 100) / 300)
+percentage=$((($total * 100) / 300))
 
 # Determine grade based on percentage
-if (( $(echo $percentage >= 90) )); then
+if (( $($percentage >= 90) )); then
     grade="A+"
-elif (( $(echo $percentage >= 80) )); then
+elif (( $($percentage >= 80) )); then
     grade="A"
-elif (( $(echo $percentage >= 70) )); then
+elif (( $($percentage >= 70) )); then
     grade="B+"
-elif (( $(echo $percentage >= 60 ) )); then
+elif (( $($percentage >= 60 ) )); then
     grade="B"
-elif (( $(echo $percentage >= 50 ) )); then
+elif (( $($percentage >= 50 ) )); then
     grade="C"
-elif (( $(echo $percentage >= 40) )); then
+elif (( $($percentage >= 40) )); then
     grade="D"
 else
     grade="F"
