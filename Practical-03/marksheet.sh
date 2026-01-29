@@ -42,17 +42,17 @@ total=$((marks1 + marks2 + marks3))
 percentage=$(echo "scale=2; ($total * 100) / 300" | bc)
 
 # Determine grade based on percentage
-if (( $(echo "$percentage >= 90" | bc -l) )); then
+if (( $(echo $percentage >= 90 | bc -l) )); then
     grade="A+"
-elif (( $(echo "$percentage >= 80" | bc -l) )); then
+elif (( $(echo $percentage >= 80 | bc -l) )); then
     grade="A"
-elif (( $(echo "$percentage >= 70" | bc -l) )); then
+elif (( $(echo $percentage >= 70 | bc -l) )); then
     grade="B+"
-elif (( $(echo "$percentage >= 60" | bc -l) )); then
+elif (( $(echo $percentage >= 60 | bc -l) )); then
     grade="B"
-elif (( $(echo "$percentage >= 50" | bc -l) )); then
+elif (( $(echo $percentage >= 50 | bc -l) )); then
     grade="C"
-elif (( $(echo "$percentage >= 40" | bc -l) )); then
+elif (( $(echo $percentage >= 40 | bc -l) )); then
     grade="D"
 else
     grade="F"
