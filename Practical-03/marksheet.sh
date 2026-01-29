@@ -39,7 +39,7 @@ read -p "Subject 3 : " marks3
 
 # Calculate total and percentage
 total=$((marks1 + marks2 + marks3))
-percentage=$(echo "scale=2; ($total * 100) / 300" | bc)
+percentage=$(echo scale=2; ($total * 100) / 300 | bc)
 
 # Determine grade based on percentage
 if (( $(echo $percentage >= 90 | bc -l) )); then
